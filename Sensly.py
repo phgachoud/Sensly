@@ -174,7 +174,7 @@ def Get_MQ2PPM(MQ2Rs_R0, Gases = []):
         Gases[4] = MQ2_Prop.Get_PPM(MQ2Rs_R0)
         Gases[5] = MQ2_LPG.Get_PPM(MQ2Rs_R0)
     else:
-	logging.debug("No value has been changed into MQ2PPM")
+      	logging.debug("No value has been changed into MQ2PPM")
 
 def Get_MQ7PPM(MQ7Rs_R0, Gases = []):
     """This Function checks the RS/R0 value to select which gas is being detected"""
@@ -221,7 +221,7 @@ def Get_MQ7PPM(MQ7Rs_R0, Gases = []):
         Gases[3] = 0
         Gases[4] = MQ7_H2.Get_PPM(MQ7Rs_R0)
     else:
-	logging.debug("No value has been changed into MQ7PPM")
+        logging.debug("No value has been changed into MQ7PPM")
 
 def Get_MQ135PPM(MQ135Rs_R0, Gases = []):
     """This Function checks the RS/R0 value to select which gas is being detected"""
@@ -330,7 +330,7 @@ def save_read_data_to_csv():
 			# Fetch the current temperature and humidity
 			temperature = bME280_Sensor.read_temperature()
 			logging.debug("BME280 read temperature is (Carefull, hat is hot so temp is not corrected by default):" + str(temperature))
-			humidity = bME280_Sensor.read_humidity()
+			
 			logging.debug("BME280 read humidity is (Carefull, hat is hot so temp is not corrected by default):" + str(humidity))
 
 			# Correct the RS/R0 ratio to account for temperature and humidity,
@@ -511,7 +511,6 @@ def MQ135_test():
 	val = b1<<8|b2
 	logging.debug("======> MQ135 Sensor raw value is %s" % val)
 
-
 def LED_test():
 	MQ2_H2.Set_LED(Green)
 
@@ -534,6 +533,6 @@ except KeyboardInterrupt:
 	logging.info("You pressed Ctrl+C, Bye")
 finally:
 	logging.info("You can check your data into " + DATA_FILE_NAME) 
-	#GPIO.cleanup() #resets any ports you have used in this program back to input mode
+	GPIO.cleanup() #resets any ports you have used in this program back to input mode
 
  
